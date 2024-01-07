@@ -1,3 +1,4 @@
+
 <div class="container">
         <table class="table table-striped table-sm table-bordered">
             <thead>
@@ -21,6 +22,14 @@
         <a href="#"><i class="fa-solid fa-trash"></i></a>
         <a href="#"><i class="fa-solid fa-pen-to-square"></i></i></a>
     </td>
-    </tr></tbody>
+    </tr>
+    <tr class="text-center ">
+   <td>
+    <a href="index.php?page=new_category">
+        new
+    </a>
+   </td>     
+    </tr>
+</tbody>
     </table>
 </div>
