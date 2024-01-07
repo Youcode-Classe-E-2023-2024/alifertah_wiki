@@ -1,3 +1,12 @@
 <?php
+$dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME;
+$username = DB_USER;
+$password = DB_PASS;
 
-$db = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+try {
+    $db = new PDO($dsn, $username, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die('Connection failed: ' . $e->getMessage());
+}
+?>
