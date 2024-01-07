@@ -10,21 +10,8 @@
         </thead>
         <tbody>
     <?php
-while($category = $stmt->fetch(PDO::FETCH_ASSOC)){
-    echo("
-    <tr class='text-center text-secondary'>
-    <td>$category[category_id]</td>
-    <td>$category[category_name]</td>
-<td>
-<a href='#'><i class='fa-solid fa-trash'></i></a>
-<a href='#'><i class='fa-solid fa-pen-to-square'></i></i></a>
-</td>
-</tr>
-    ");
-}
+        show_all($db);
     ?>
-
-
     <tr class="text-center ">
    <td>
     <a href="index.php?page=new_category">
