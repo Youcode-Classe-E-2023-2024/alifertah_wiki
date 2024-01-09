@@ -32,16 +32,16 @@
         </li>
         <?php 
         if(isset($_SESSION['user_type'])){
-          if($_SESSION['user_type'] === 'admin' && $_GET['page'] === "categories"){
+          if($_SESSION['user_type'] === 'admin'){
             echo ("
             <div class='dropdown'>
             <button class='btn  dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
               Action to categories
             </button>
             <ul class='dropdown-menu'>
-              <li><a class='dropdown-item' href='#'>Create</a></li>
-              <li><a class='dropdown-item' href='#'>Edit</a></li>
-              <li><a class='dropdown-item' href='#'>Remove</a></li>
+              <form method='post' action='index.php?page=logout'>
+                <li><button class='dropdown-item text-danger' type='submit' name='logout'>Logout</button></li>
+              </form>
             </ul>
           </div>
             ");
