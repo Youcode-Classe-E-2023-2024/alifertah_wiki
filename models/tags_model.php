@@ -20,6 +20,14 @@ function show_all($db){
     }
 }
 
+if(isset($_POST['newTag'])){
+    $tag = $_POST['tagName'];
+    // insert_category();
+    $stmt = $db->prepare("INSERT INTO tags (tag_name) VALUES (?)");
+    $stmt->execute([$tag]);
+    // header("Location: index.php?page=tags");
+}
+
 if(isset($_POST['delete'])){
     $cat = $_POST['tag_id'];
     $stmt = $db->prepare("DELETE FROM tags WHERE tag_id = '$cat'");
