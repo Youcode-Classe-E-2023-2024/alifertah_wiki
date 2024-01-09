@@ -31,6 +31,7 @@
           <a class="nav-link active" aria-current="page" href="index.php?page=register">register</a>
         </li>
         <?php 
+        if(isset($_SESSION['user_type'])){
           if($_SESSION['user_type'] === 'admin' && $_GET['page'] === "categories"){
             echo ("
             <div class='dropdown'>
@@ -45,6 +46,7 @@
           </div>
             ");
           }
+        }
         ?>
       </ul>
       <form class="d-flex" role="search">
