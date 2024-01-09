@@ -22,9 +22,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php?page=categories">categories</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php?page=login">login</a>
         </li>
         <li class="nav-item">
@@ -36,9 +33,15 @@
             echo ("
             <div class='dropdown'>
             <button class='btn  dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
-              Action to categories
+            Action to categories
             </button>
             <ul class='dropdown-menu'>
+            <li class='nav-item'>
+              <a class='nav-link active' aria-current='page' href='index.php?page=categories'>categories</a>
+            </li>
+            <li class='nav-item'>
+              <a class='nav-link active' aria-current='page' href='index.php?page=tags'>Tags</a>
+            </li>
               <form method='post' action='index.php?page=logout'>
                 <li><button class='dropdown-item text-danger' type='submit' name='logout'>Logout</button></li>
               </form>
