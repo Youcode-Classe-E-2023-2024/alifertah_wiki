@@ -15,8 +15,8 @@
     <tr class="text-center ">
    <td>
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#categoryModal">
-  Add 
-</button>
+    Add
+   </button>
 
 <div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="categoryModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
