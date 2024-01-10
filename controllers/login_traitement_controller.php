@@ -1,29 +1,23 @@
 <?php
-if (isset($_POST['email'], $_POST['password'], $_POST['username'])) {
+if (isset($_POST['email'], $_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    $username = $_POST['username'];
 
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        try {
-            $stmt = $db->prepare("INSERT INTO users (users_email, users_password, users_username) VALUES (?, ?, ?)");
-            $stmt->bindParam(1, $email);
-            $stmt->bindParam(2, $hashedPassword);
-            $stmt->bindParam(3, $username);
+    try {
+        $stmt = $db->prepare("SELECT password FROM users WHERE email = ?");
+        $stmt->bindParam(1, $email);
+        $stmt->execute();
+        $hashedPassword = $stmt->fetchColumn();
+        $stmt->closeCursor();
 
-            if ($stmt->execute()) {
-                echo json_encode(array("success" => "User registered successfully"));
-            } else {
-                echo json_encode(array("error" => "Failed to register user"));
-            }
-            $stmt->closeCursor();
-        } catch (PDOException $e) {
-            echo json_encode(array("error" => "Database error: " . $e->getMessage()));
+        if ($hashedPassword && password_verify($password, $hashedPassword)) {
+            $_SESSION['email'] = $email;
+            echo json_encode(array("success" => "Login successful"));
+        } else {
+            echo json_encode(array("error" => "Invalid email or password"));
         }
-
-    } else {
-        echo json_encode(array("error" => "Please enter a valid email"));
+    } catch (PDOException $e) {
+        echo json_encode(array("error" => "Database error: " . $e->getMessage()));
     }
     exit();
 }

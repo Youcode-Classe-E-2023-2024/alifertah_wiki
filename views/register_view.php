@@ -91,7 +91,6 @@
 					text: data.error,
 					confirmButtonColor: '#34D399',
 				});
-				// document.getElementById('error').innerHTML = data.error
 			}
 			if(data.success){
 				Swal.fire({
