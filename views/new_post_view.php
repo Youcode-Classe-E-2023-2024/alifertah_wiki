@@ -1,5 +1,5 @@
 <div class="container">
-    <form>
+    <form method="post">
         <div class="form-group">
             <label for="post_title">post_title</label>
             <input type="text" class="form-control" id="post_title" name='post_title' placeholder="post_title">
@@ -24,7 +24,7 @@
             <label for="post_content">content</label>
             <textarea class="form-control" id="post_content" name="post_content" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" name='create' class="btn btn-success">Submit</button>
 
     </form>
 </div>

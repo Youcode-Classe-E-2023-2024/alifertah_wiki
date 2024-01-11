@@ -1,1 +1,9 @@
 <?php
+if(isset($_POST['create'])){
+    create_post($db, 
+    $_POST['post_title'], 
+    $_POST['post_category'], 
+    $_SESSION['user'],
+    $_POST['post_content']
+);
+}
