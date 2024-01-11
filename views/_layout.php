@@ -45,6 +45,9 @@
             <li class='nav-item'>
               <a class='nav-link active' aria-current='page' href='index.php?page=tags'>Tags</a>
             </li>
+            <li class='nav-item'>
+              <a class='nav-link active' aria-current='page' href='index.php?page=dashboard'>Dashboard</a>
+            </li>
               <form method='post' action='index.php?page=logout'>
                 <li><button class='dropdown-item text-danger' type='submit' name='logout'>Logout</button></li>
               </form>

@@ -4,15 +4,18 @@ if (isset($_POST['email'], $_POST['password'])) {
     $password = $_POST['password'];
 
     try {
-        $stmt = $db->prepare("SELECT password FROM users WHERE email = ?");
+        $stmt = $db->prepare("SELECT user_id, user_type, password FROM users WHERE email = ?");
         $stmt->bindParam(1, $email);
         $stmt->execute();
-        $hashedPassword = $stmt->fetchColumn();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
 
-        if ($hashedPassword && password_verify($password, $hashedPassword)) {
+        if ($result && password_verify($password, $result['password'])) {
             $_SESSION['email'] = $email;
-            echo json_encode(array("success" => "Login successful"));
+            $_SESSION['user'] = $result['user_id'];
+            $_SESSION['user_type'] = $result['user_type'];
+            
+            echo json_encode(array("success" => "Login successful", "role" => $result['user_type']));
         } else {
             echo json_encode(array("error" => "Invalid email or password"));
         }

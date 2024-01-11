@@ -49,7 +49,12 @@
 				confirmButtonColor: '#34D399',
 				icon: "success",
 				});
-				setTimeout(()=>{window.location.href = "index.php?page=dashboard"}, 1000)
+				if(data.role === 'admin'){
+					setTimeout(()=>{window.location.href = "index.php?page=categories"}, 1000)
+				}
+				else if(data.role === 'author'){
+					setTimeout(()=>{window.location.href = "index.php?page=dashboard"}, 1000)
+				}
 			}
 		})
 	})
