@@ -12,3 +12,20 @@ function getAllCategories(PDO $pdo) {
     }
 }
 
+
+function create_post($post_title, $category, $content){
+
+}
+
+function getAllTags(PDO $pdo) {
+
+    $sql = "SELECT * FROM tags";
+
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+
+    $allTags = $statement->fetchAll(PDO::FETCH_ASSOC);
+    foreach($allTags as $tag ){
+        echo("<option>".$tag['tag_name'])."</option>";
+    }
+}

@@ -15,8 +15,8 @@
         <div class="form-group">
             <label for="category">tags</label>
             <select class="form-control" id="tags" name="tags">
-                <option>1</option>
-                <option>2</option>
+                <option>--select tag--</option>
+                <?php getAllTags($db); ?>
             </select>
         </div>
         
