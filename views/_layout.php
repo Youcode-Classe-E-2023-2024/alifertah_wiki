@@ -54,6 +54,19 @@
             </ul>
           </div>
             ");
+          } else {
+            echo ("
+            <div class='dropdown'>
+            <button class='btn  dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
+            Action to categories
+            </button>
+            <ul class='dropdown-menu'>
+              <form method='post' action='index.php?page=logout'>
+                <li><button class='dropdown-item text-danger' type='submit' name='logout'>Logout</button></li>
+              </form>
+            </ul>
+          </div>
+            ");
           }
         }
         ?>

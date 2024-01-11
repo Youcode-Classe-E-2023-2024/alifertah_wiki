@@ -1,10 +1,41 @@
-table,
-td {
-    border: 1px solid #333;
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
 }
 
-thead,
-tfoot {
-    background-color: #333;
-    color: #fff;
+.blog-post {
+    background-color: #ffffff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.blog-post:hover {
+    transform: scale(1.02);
+}
+
+.blog-post img {
+    max-width: 100%;
+    border-radius: 8px 8px 0 0;
+}
+
+.blog-post .info {
+    padding: 20px;
+}
+
+.blog-post h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.blog-post p {
+    color: #555;
+}
+
+.blog-post .date {
+    color: #888;
+    font-size: 0.9em;
 }
