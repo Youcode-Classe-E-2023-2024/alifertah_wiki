@@ -30,28 +30,46 @@
 </div>
 
 <script>
+let formData = new FormData();
 var tags = document.getElementById("tagSelect")
 let selectedTags = []
 tags.addEventListener("change", function() {
-  let selectedTag = this.options[this.selectedIndex];
-  let tagId = parseInt(selectedTag.id); // Ensure the id is treated as an integer
-  selectedTags.push(tagId);
-  selectedTag.style.display = "none";
+    let selectedTag = this.options[this.selectedIndex];
+    let tagId = parseInt(selectedTag.id); // Ensure the id is treated as an integer
+    selectedTags.push(tagId);
+    selectedTag.style.display = "none";
 });
 
 document.getElementById('submitPost').addEventListener("click", (event)=>{
-        
-    fetch("index.php?page=process_tags", {
+    event.preventDefault()
+    formData.append("post_title", document.getElementById("post_title").value)
+    formData.append("post_category", document.getElementById("post_category").value)
+    formData.append("post_content", document.getElementById("post_content").value)
+    formData.append("create", "create")
+    
+    fetch("index.php?page=new_post", {
          method: "POST",
-         headers: {
-           "Content-Type" : "application/json",
-         },
-         body: JSON.stringify({items: selectedTags})
-        })
-        
-        .then(response => response.json())
+         body: formData
+        }).then(response => response.json())
         .then(data =>{
-         console.log("Success", data);
+            console.log(data.postId);
+            // selectedTags.push(parseInt(data.postId));
+            selectedTags.push(parseInt(data.postId));
+            fetch("index.php?page=process_tags", {
+             method: "POST",
+             headers: {
+               "Content-Type" : "application/json",
+             },
+             body: JSON.stringify({items: selectedTags})
+            })
+
+            .then(response => response.json())
+            .then(data =>{
+             console.log("Success", data);
+            })
+            .catch((error) => {
+                 console.error('Error:', error);
+             });
         })
         .catch((error) => {
              console.error('Error:', error);

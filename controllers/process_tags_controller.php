@@ -1,7 +1,6 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     $json_data = file_get_contents("php://input");
     $tags_array = json_decode($json_data, true);
 
@@ -9,9 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $query = "INSERT INTO posts_tags (tag_id, post_id) VALUES (:tag_id, :post_id)";
         $stmt = $db->prepare($query);
 
-        $post_id = $db->lastInsertId();
-
-        for ($i = 0; $i < count($tags_array['items']); $i++) {
+        $post_id = $tags_array['items'][count($tags_array['items']) - 1];
+   
+        for ($i = 0; $i < (count($tags_array['items'])) - 1; $i++) {
             $stmt->bindParam(':post_id', $post_id, PDO::PARAM_INT);
             $stmt->bindParam(':tag_id', $tags_array['items'][$i], PDO::PARAM_INT);
             $stmt->execute();

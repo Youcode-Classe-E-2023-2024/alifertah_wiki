@@ -23,7 +23,14 @@ function create_post(PDO $pdo, $post_title, $post_category, $post_author, $post_
     $statement->bindParam(':content', $post_content, PDO::PARAM_STR);
 
     $statement->execute();
+
+    $lastInsertId = $pdo->lastInsertId();
+
+
+    echo json_encode(['postId' => $lastInsertId]);
+    die();
 }
+
 
 function getAllTags(PDO $pdo) {
 

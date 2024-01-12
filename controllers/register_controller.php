@@ -1,5 +1,5 @@
 <?php
- if (isset($_POST['register'])) {
+ if (isset($_POST)) {
     $name = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -7,6 +7,6 @@
     $stmt = $db->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
     $stmt->execute([$name, $email, $hashedPassword]);
 
-    header('Location: index.php?page=login');
     exit();
+    // header('Location: index.php?page=login');
 }
