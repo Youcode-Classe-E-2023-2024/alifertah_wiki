@@ -26,7 +26,7 @@ CREATE TABLE posts (
     post_categoy INT
 );
 
-CREATE TABLE tags (
+CREATE TABLE posts_tags (
     tag_id INT,
     post_id INT
 );

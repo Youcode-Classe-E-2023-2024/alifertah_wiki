@@ -34,6 +34,6 @@ function getAllTags(PDO $pdo) {
 
     $allTags = $statement->fetchAll(PDO::FETCH_ASSOC);
     foreach($allTags as $tag ){
-        echo("<option>".$tag['tag_name'])."</option>";
+        echo("<option id='$tag[tag_id]' class='tag'>".$tag['tag_name'])."</option>";
     }
 }
