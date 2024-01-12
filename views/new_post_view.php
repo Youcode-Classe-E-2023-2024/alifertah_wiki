@@ -24,7 +24,7 @@
             <label for="post_content">content</label>
             <textarea class="form-control" id="post_content" name="post_content" rows="3"></textarea>
         </div>
-        <button id="submitPost" type="submit" name='create' class="btn btn-success">Submit</button>
+        <button  id="submitPost" type="submit" name='create' class="btn btn-success">Submit</button>
 
     </form>
 </div>
