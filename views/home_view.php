@@ -14,9 +14,9 @@
         }
 
         .blog-post {
-            background-color: #ffffff;
+            background-color: #fff;
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
@@ -36,27 +36,42 @@
         }
 
         .blog-post h2 {
-            font-size: 1.8em;
-            margin-bottom: 10px;
+            font-size: 2em;
+            margin-bottom: 15px;
             color: #333;
         }
 
         .blog-post p {
             color: #555;
+            font-size: 1.1em;
+            line-height: 1.6;
         }
 
         .blog-post .date {
             color: #888;
             font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .blog-post .author {
+            color: #555;
+            font-size: 1em;
+            margin-bottom: 10px;
         }
 
         .blog-post .category {
             color: #007bff;
-            font-size: 0.9em;
+            font-size: 1em;
         }
 
         .read-more {
             color: #007bff;
+            font-size: 1.2em;
+            text-decoration: none;
+        }
+
+        .read-more i {
+            margin-left: 5px;
         }
     </style>
 </head>
@@ -65,7 +80,7 @@
     <div class="container mt-5">
         <div class="row">
             <?php
-            $query = "SELECT post_id, post_title, post_content, post_date, post_category FROM posts";
+            $query = "SELECT post_id, post_title, post_content, post_date, post_category, post_author FROM posts";
             $stmt = $db->query($query);
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -74,16 +89,18 @@
                 $postContent = $row['post_content'];
                 $postDate = $row['post_date'];
                 $categoryName = $row['post_category'];
+                $postAuthor = $row['post_author'];
             ?>
                 <div class="col-lg-6">
                     <div class="blog-post">
                         <img src="https://via.placeholder.com/800x400" alt="Sample Image" class="img-fluid">
                         <div class="info">
                             <h2><?php echo $postTitle; ?></h2>
-                            <p><?php echo substr($postContent, 0, 30) . '...'; ?></p>
+                            <p class="date">Published on <?php echo date('F j, Y', strtotime($postDate)); ?></p>
+                            <p class="author">Author: <?php echo $postAuthor; ?></p>
                             <p class="category">Category: <?php echo $categoryName; ?></p>
-                            <p class="date"><?php echo date('F j, Y', strtotime($postDate)); ?></p>
-                            <a href="index.php?page=post&title=<?= $postTitle;?> &content=<?=$postContent ?>&date=<?= $postDate?>&category=<?= $categoryName?>&id=<?= (int)$postId?>" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
+                            <p><?php echo substr($postContent, 0, 150) . '...'; ?></p>
+                            <a href="index.php?page=post&id=<?= (int)$postId ?>" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -93,4 +110,5 @@
         </div>
     </div>
 </body>
+
 </html>
