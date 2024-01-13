@@ -23,13 +23,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php?page=login">login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php?page=register">register</a>
-        </li>
+
         <?php 
         if(isset($_SESSION['user_type'])){
           if($_SESSION['user_type'] === 'admin'){
@@ -54,7 +48,7 @@
             </ul>
           </div>
             ");
-          } else {
+          }if($_SESSION['user_type'] == 'author') {
             echo ("
             <div class='dropdown'>
             <button class='btn  dropdown-toggle' type='button' data-bs-toggle='dropdown' aria-expanded='false'>
@@ -72,6 +66,17 @@
           </div>
             ");
           }
+        } else {
+          echo("
+          <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
+          <li class='nav-item'>
+            <a class='nav-link active' aria-current='page' href='index.php?page=login'>login</a>
+          </li>
+          <li class='nav-item'>
+            <a class='nav-link active' aria-current='page' href='index.php?page=register'>register</a>
+          </li>
+          <ul>
+          ");
         }
         ?>
       </ul>
