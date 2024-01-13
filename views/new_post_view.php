@@ -83,6 +83,4 @@ document.getElementById('submitPost').addEventListener("click", (event)=>{
              console.error('Error:', error);
          });
 })
-
- 
 </script>

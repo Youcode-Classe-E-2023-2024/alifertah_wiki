@@ -55,9 +55,9 @@
 
         <!-- Post Header -->
         <div class="post-header">
-            <h1>Sample Blog Post Title</h1>
+            <h1><?= $_GET['title']?></h1>
             <p class="post-meta">
-                January 1, 2024 | Category: Technology
+            <?= $_GET['date']?> | <?= $_GET['category']?>
             </p>
         </div>
 
@@ -66,15 +66,18 @@
 
         <!-- Post Content -->
         <div class="post-content">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
-            <p>Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.</p>
-            <p>Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+            <?= $_GET['content']?>
         </div>
 
         <!-- Post Tags -->
         <p class="post-tags">
-            Tags: <a href="#">Tag1</a>, <a href="#">Tag2</a>, <a href="#">Tag3</a>
-        </p>
+            Tags:
+            <?php
+            // print_r($tags);
+            foreach ($tags as $tag) {
+                echo '<a href="#">' . $tag . '</a>, ';
+            }
+            ?>
 
     </div>
 

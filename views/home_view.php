@@ -50,6 +50,11 @@
             font-size: 0.9em;
         }
 
+        .blog-post .category {
+            color: #007bff;
+            font-size: 0.9em;
+        }
+
         .read-more {
             color: #007bff;
         }
@@ -57,18 +62,10 @@
 </head>
 
 <body>
-
-    <!-- Page Content -->
     <div class="container mt-5">
-
-        <!-- Blog Posts -->
         <div class="row">
-
             <?php
-            // Include your PDO connection here
-
-            // Fetch data from the posts table
-            $query = "SELECT post_id, post_title, post_content, post_date FROM posts";
+            $query = "SELECT post_id, post_title, post_content, post_date, post_category FROM posts";
             $stmt = $db->query($query);
 
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -76,29 +73,24 @@
                 $postTitle = $row['post_title'];
                 $postContent = $row['post_content'];
                 $postDate = $row['post_date'];
+                $categoryName = $row['post_category'];
             ?>
-
-                <!-- Blog Post Card -->
                 <div class="col-lg-6">
                     <div class="blog-post">
                         <img src="https://via.placeholder.com/800x400" alt="Sample Image" class="img-fluid">
                         <div class="info">
                             <h2><?php echo $postTitle; ?></h2>
-                            <p><?php echo substr($postContent, 0, 150) . '...'; ?></p>
+                            <p><?php echo substr($postContent, 0, 30) . '...'; ?></p>
+                            <p class="category">Category: <?php echo $categoryName; ?></p>
                             <p class="date"><?php echo date('F j, Y', strtotime($postDate)); ?></p>
-                            <a href="#" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
+                            <a href="index.php?page=post&title=<?= $postTitle;?> &content=<?=$postContent ?>&date=<?= $postDate?>&category=<?= $categoryName?>&id=<?= (int)$postId?>" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
                         </div>
                     </div>
                 </div>
-
             <?php
             }
             ?>
-
         </div>
-
     </div>
-
 </body>
-
 </html>
