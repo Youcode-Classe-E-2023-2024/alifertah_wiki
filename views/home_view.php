@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,43 +55,50 @@
         }
     </style>
 </head>
+
 <body>
 
-<!-- Page Content -->
-<div class="container mt-5">
+    <!-- Page Content -->
+    <div class="container mt-5">
 
-    <!-- Blog Posts -->
-    <div class="row">
+        <!-- Blog Posts -->
+        <div class="row">
 
-        <!-- Blog Post 1 -->
-        <div class="col-lg-6">
-            <div class="blog-post">
-                <img src="https://via.placeholder.com/800x400" alt="Sample Image" class="img-fluid">
-                <div class="info">
-                    <h2>Sample Blog Post Title 1</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    <p class="date">January 1, 2024</p>
-                    <a href="#" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
+            <?php
+            // Include your PDO connection here
+
+            // Fetch data from the posts table
+            $query = "SELECT post_id, post_title, post_content, post_date FROM posts";
+            $stmt = $db->query($query);
+
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $postId = $row['post_id'];
+                $postTitle = $row['post_title'];
+                $postContent = $row['post_content'];
+                $postDate = $row['post_date'];
+            ?>
+
+                <!-- Blog Post Card -->
+                <div class="col-lg-6">
+                    <div class="blog-post">
+                        <img src="https://via.placeholder.com/800x400" alt="Sample Image" class="img-fluid">
+                        <div class="info">
+                            <h2><?php echo $postTitle; ?></h2>
+                            <p><?php echo substr($postContent, 0, 150) . '...'; ?></p>
+                            <p class="date"><?php echo date('F j, Y', strtotime($postDate)); ?></p>
+                            <a href="#" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- Blog Post 2 -->
-        <div class="col-lg-6">
-            <div class="blog-post">
-                <img src="https://via.placeholder.com/800x400" alt="Sample Image" class="img-fluid">
-                <div class="info">
-                    <h2>Sample Blog Post Title 2</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-                    <p class="date">January 2, 2024</p>
-                    <a href="#" class="read-more"><i class="fas fa-arrow-right"></i> Read More</a>
-                </div>
-            </div>
+            <?php
+            }
+            ?>
+
         </div>
 
     </div>
 
-</div>
-
 </body>
+
 </html>

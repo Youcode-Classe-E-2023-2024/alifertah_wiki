@@ -65,7 +65,15 @@ document.getElementById('submitPost').addEventListener("click", (event)=>{
 
             .then(response => response.json())
             .then(data =>{
-             console.log("Success", data);
+             if(data.success){
+                Swal.fire({
+				title: "Success",
+				text: data.success,
+				confirmButtonColor: '#34D399',
+				icon: "success",
+				});
+				setTimeout(()=>{window.location.href = "index.php?page=home"}, 1000)
+             }
             })
             .catch((error) => {
                  console.error('Error:', error);
