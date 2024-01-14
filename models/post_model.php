@@ -48,6 +48,7 @@ function edit_post($db, $title, $content, $category, $postId) {
     $stmt->bindParam(':post_id', $postId, PDO::PARAM_INT);
 
     if ($stmt->execute()) {
+        header("Location: index.php?page=home");
         return true; 
     } else {
         return false;

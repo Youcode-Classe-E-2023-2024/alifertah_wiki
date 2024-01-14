@@ -89,7 +89,6 @@
                 </div>
             <div class='modal-body'>
 
-                <!-- Your form goes here -->
                 <div class='container'>
                     <form method='post'>
                         <input name='post_id' value=<?= $_GET['id']?> >
