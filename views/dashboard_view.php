@@ -65,25 +65,25 @@
             <div class="col-lg-4">
                 <!-- Metrics -->
                 <div class="card metric-card">
-                    <h5 class="card-title">Metrics</h5>
+                    <h5 class="card-title">Statistics</h5>
                     <div class="row">
                         <div class="col">
-                            <div class="metric-value">123</div>
-                            <div class="metric-label">Metric 1</div>
+                            <div class="metric-value"><?= getTotalUsers()?></div>
+                            <div class="metric-label">USERS</div>
                         </div>
                         <div class="col">
-                            <div class="metric-value">456</div>
-                            <div class="metric-label">Metric 2</div>
+                            <div class="metric-value"><?=getTotalCategories()?></div>
+                            <div class="metric-label">CATEGORIES</div>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col">
-                            <div class="metric-value">789</div>
-                            <div class="metric-label">Metric 3</div>
+                            <div class="metric-value"><?=getTotalTags()?></div>
+                            <div class="metric-label">TAGS</div>
                         </div>
                         <div class="col">
-                            <div class="metric-value">321</div>
-                            <div class="metric-label">Metric 4</div>
+                            <div class="metric-value"><?=getTotalPosts()?></div>
+                            <div class="metric-label">POSTS</div>
                         </div>
                     </div>
                 </div>

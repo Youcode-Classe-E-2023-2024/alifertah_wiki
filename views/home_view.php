@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <!-- ... (your head content remains the same) ... -->
-</head>
-
-<body>
     <div class="container mt-5">
         <div class="row">
             <?php
@@ -56,6 +49,3 @@
             ?>
         </div>
     </div>
-</body>
-
-</html>

@@ -64,7 +64,7 @@
     </p>
 
     <?php
-    if (trim($_SESSION['user']) == trim($_GET['author'])) {
+    if (isset($_SESSION['user']) && trim($_SESSION['user']) == trim($_GET['author'])) {
         echo "<div class='d-flex justify-content-start align-items-center'>
         <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#postModal'>
         Edit Post
@@ -91,7 +91,7 @@
 
                 <div class='container'>
                     <form method='post'>
-                        <input name='post_id' value=<?= $_GET['id']?> >
+                        <input name='post_id' value=<?= $_GET['id']?> hidden>
                         <div class='form-group'>
                             <label for='post_title'>Post Title</label>
                             <input type='text' class='form-control' id='post_title' name='post_title'
@@ -125,7 +125,6 @@
         </div>
     </div>
 </div>
-
     <script>
         function confirmDelete() {
             return confirm('Are you sure you want to delete this post?');
